@@ -27,10 +27,14 @@ export function AppContextPage() {
 		setStatus('idle');
 	};
 
+	const updateExampleContextProp = () => {
+		appContext.setExampleProp && appContext.setExampleProp(Math.random() * 1000);
+	};
+
 	return (
 		<Page>
 			<div>I am AppContextPage!</div>
-			<div>This is the value of AppContext: {JSON.stringify(appContext)}</div>
+			<div>This is the value of AppContext.exampleProp: {appContext.exampleProp || ''}</div>
 			<div>Status of fetching auditRecords: {status}</div>
 			<div>Contents of auditRecords are currently: {JSON.stringify(auditRecords)}</div>
 			<button aria-label="Reset audit records" onClick={clearAuditRecords}>
@@ -38,6 +42,9 @@ export function AppContextPage() {
 			</button>
 			<button aria-label="Fetch audit records" onClick={getAuditRecords}>
 				Fetch audit records
+			</button>
+			<button aria-label="Fetch audit records" onClick={updateExampleContextProp}>
+				Update app context example prop to random number
 			</button>
 		</Page>
 	);

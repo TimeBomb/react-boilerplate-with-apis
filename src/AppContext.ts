@@ -1,3 +1,7 @@
 import React from 'react';
 
-export default React.createContext({});
+type AppContext = {
+	exampleProp?: string;
+	setExampleProp?: (any) => void;
+};
+export default React.createContext<AppContext>({});
